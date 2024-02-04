@@ -1,11 +1,11 @@
 # SpokenAi
-English | [简体中文](./README-zh.md)
+English | [PT-BR](./README-zh.md)
 <p>
 	<p align="center">
 		<img height=280 src="https://storage.googleapis.com/gopherizeme.appspot.com/gophers/c783b6ca0e3c10aa7d9b29c4cc9d1526c5281f34.png">
 	</p>
 	<p align="center">
-		<font size=6 face="宋体">英语口语练习AI助手</font>
+		<font size=6 face="宋体">Assistente de IA para prática de conversação em inglês</font>
 	<p>
 </p>
 <p align="center">
@@ -17,67 +17,69 @@ English | [简体中文](./README-zh.md)
 <img alt="license" src="https://img.shields.io/badge/license-Apache-lightgrey"/>
 </p>
 
-## 一.前言
+## I. Preâmbulo
 
-最近几个月大火大热的ChatGPT已经发布到ChatGPT4版本了，我也一直在关注ChatGPT的发展，一直在思考能基于ChatGPT或着说openai的能力能做出点什么应用，解决一些问题。
+Nos últimos meses, o ChatGPT foi lançado na versão ChatGPT4, e eu tenho me preocupado com o desenvolvimento do ChatGPT, pensando que ele pode se basear no ChatGPT ou na capacidade de dizer que o openai pode fazer questão de quais aplicativos, para resolver alguns dos problemas!.
 
-💥在仔细看过openai的[API文档](https://platform.openai.com/)后，发现openai不止提供了Chat的能力，还提供了如语音转文字，图片生成等能力。虽然没有ChatGPT那么火，但经过一番试用后，发现和ChatGPT效果一样让人惊艳。索性就直接来一个openai全家桶，通过openai的能力开发一款应用试试。
+💥Depois de dar uma olhada na [documentação da API] do openai (https://platform.openai.com/), descobri que o openai oferece não apenas os recursos do Chat, mas também recursos como fala para texto, geração de imagens e assim por diante. Embora não seja tão bom quanto o ChatGPT, depois de alguns testes, descobri que ele é tão incrível quanto o ChatGPT. Portanto, é diretamente o balde da família openai, por meio da capacidade openai de desenvolver um aplicativo para experimentar.
 
-开发什么呢？ 🤔
+Desenvolvendo o quê? 🤔
 
-ChatGPT对英语的语言能力自然不必说，而我们国人当下英语学习面临的一大问题就是哑巴英语，市面上的提供的英语对话机器人和ChatGPT比起来差得不是一星半点。只能请老师一对一真人教学？ 🤨  拜托，现在都2023年了，还需要花钱请口语老师么？
+ChatGPT sobre as habilidades no idioma inglês, naturalmente, não é preciso dizer, e nossos compatriotas enfrentam um grande problema no aprendizado de inglês, que é o inglês mudo. O mercado oferece robôs de diálogo em inglês e o ChatGPT, em comparação com a diferença, não é meia estrela. Você só pode contratar um professor para dar aulas particulares pessoalmente? 🤨  Vamos lá, estamos em 2023, ainda precisamos pagar por um professor de oratória?
 
-来造一款Ai口语练习应用解决这个问题 💯
+Vamos criar um aplicativo de prática de fala em áudio para resolver esse problema! 💯
 
-## 二.支持功能
+## II. Funções de suporte
 
-目前是一个简单版本的英语口语练习功能，支持如下功能
-1. 读取语音输入
-2. 语音转文字
-3. 通过ChatGPT沟通交流
-4. 文字转音频
-5. 音频播放
+Atualmente, é uma versão simples da função de prática de conversação em inglês, que oferece suporte às seguintes funções
+1. Ler entrada de voz
+2. conversão de voz em texto
+3. Comunique-se por meio do ChatGPT
+4. Texto para áudio
+5. Reprodução de áudio
 
 ToDoList：  
-- [ ]  寻找志同道合的小伙伴，有意向一起制作一款Ai应用的请联系我！！！
-- [ ]  修复Bug，已知：mac播放音频存在兼容性问题、Tensorflowtts不支持长语句（>2048字节）合成语音
-- [ ]  编码后端服务
+- [ ]  Procurando parceiros com a mesma mentalidade que estejam interessados em criar um aplicativo Ai juntos, entre em contato comigo!!!!
+- [ ]  Correção de bugs, conhecidos: problemas de compatibilidade de áudio de reprodução do mac, o Tensorflowtts não suporta declarações longas (>2048 bytes) de voz sintetizada
+- [ ]  Codificação de serviços de back-end
 
-## 三.系统架构
+## III. Arquitetura do sistema
 <p align="center">
       <img height="400px" src="./docs/images/struction.png" title="gogeek">
 </p>
 
-- portaudio:  PortAudio是一个跨平台的音频I/O库，提供了简单的API，使得开发人员可以在不同的平台上以相似的方式访问音频硬件。它支持Windows、Mac OS X、Linux和其他主要的操作系统。PortAudio支持多种音频API，包括ASIO、Core Audio、DirectSound、MME / WDM、ALSA和OSS。PortAudio还包括一个流接口，允许开发人员以相同的方式使用不同的音频API和硬件。   
+- portaudio: PortAudio é uma biblioteca de E/S de áudio multiplataforma que fornece APIs simples que permitem aos desenvolvedores acessar o hardware de áudio de forma semelhante em diferentes plataformas. Ela é compatível com Windows, Mac OS X, Linux e outros sistemas operacionais importantes. O PortAudio é compatível com uma ampla variedade de APIs de áudio, incluindo ASIO, Core Audio, DirectSound, MME/WDM, ALSA e OSS. O PortAudio também inclui uma interface de streaming que permite que os desenvolvedores usem APIs e hardware de áudio diferentes da mesma forma que usam APIs e hardware de áudio diferentes. com diferentes APIs de áudio e hardware.   
 
-- openai-api: 提供了多种API服务，包括但不限于自然语言处理、语音转文字、文字转语音、图像生成等。在OpenAI的API文档中，用户可以申请API密钥，并使用API进行开发和测试。
+- openai-api: fornece uma variedade de serviços de API, incluindo, entre outros, processamento de linguagem natural, conversão de fala em texto, conversão de texto em fala, geração de imagens e muito mais. Na documentação da API da OpenAI, os usuários podem solicitar chaves de API e usar a API para desenvolvimento e teste.
 
-- tensorflowtts: [TensorflowTTS](https://github.com/TensorSpeech/TensorflowTTS) 是一个基于 TensorFlow 的语音合成工具包，它包含了多种语音合成模型和前处理工具，并且支持多种语音合成任务，例如有人声合成（Vocoder）、语音转换、语音增强等。它可以帮助开发者快速搭建语音合成模型，定制自己的语音合成系统。
-- Docker: Docker是一种容器化技术，可以将应用程序及其依赖项打包在一个容器中，以便在任何地方运行。容器是一种轻量级的虚拟化技术，可以提供与传统虚拟机相似的隔离性和安全性，但占用的资源更少。Docker还提供了一套工具和平台，使得容器的构建、部署和管理变得更加容易。
-- SpokenAi:整体应用层，其中有三个库分别是praudio、rocket、ttsclient，对应如下作用
-    1. praudio: 封装portaudio，对外提供音频录制和音频播放等接口
-    2. rocket: 封装openai-api, 对外提供Chat接口、音频转文字等接口
-    3. ttsclient: 提供调用容器化运行的tensorflowtts的接口
-- Console: 终端交互层，用户按提示进行操作，输入信息和进行相关操作
+- tensorflowtts: o [TensorflowTTS] (https://github.com/TensorSpeech/TensorflowTTS) é um kit de ferramentas de síntese de fala baseado no TensorFlow que contém uma ampla variedade de modelos de síntese de fala e ferramentas de pré-processamento, além de oferecer suporte a várias tarefas de síntese de fala como síntese de voz humana (Vocoder), conversão de fala, aprimoramento de fala e assim por diante. Ele ajuda os desenvolvedores a criar rapidamente modelos de síntese de fala e a personalizar seus próprios sistemas de síntese de fala.
+- Docker: o Docker é uma tecnologia de conteinerização que empacota aplicativos e suas dependências em um contêiner para execução em qualquer lugar. Os contêineres são uma tecnologia de virtualização leve que oferece isolamento e segurança semelhantes aos das máquinas virtuais tradicionais, mas ocupa menos recursos. O Docker também oferece um conjunto de ferramentas e plataformas que facilitam a criação, a implantação e o gerenciamento de contêineres.
 
-   Tips:tensorflowtts 依赖较多，为方便完整，这里采用Docker部署
-## 四.流程设计
+- SpokenAi:A camada geral do aplicativo, na qual há três bibliotecas, praudio, rocket e ttsclient, corresponde às seguintes funções
+    1. praudio: Encapsulam o portaudio para fornecer interfaces para gravação e reprodução de áudio.
+    2. rocket: Encapsular o openai-api, fornecer interface de bate-papo externa, interface de áudio para texto, etc.
+    3. ttsclient: Fornecer uma interface para chamar tensorflowtts em execução em contêineres
+- Console: Camada de interação do terminal, onde o usuário é solicitado a operar, inserir informações e realizar operações relacionadas
+
+   Tips:tensorflowtts Há mais dependências, portanto, para fins de integridade, aqui está a implantação do Docker
+
+## IV. Projeto do processo
 
 <p align="center">
       <img height="500px" src="./docs/images/sysflow.png" title="gogeek">
 </p>
 
-简单概括总体流程有三个步骤，一是输入个人信息  二是录音转文字，三是发送消息，进行对话交互
+Para resumir brevemente o processo geral, há três etapas: uma é a inserção de informações pessoais, a segunda é a conversão de áudio em texto e a terceira é o envio de uma mensagem para interação de diálogo.
 
-由于是通过终端访问，主要监听键盘事件，进行不同操作
+Como é acessado por meio do terminal, ele ouve principalmente os eventos do teclado e executa diferentes operações.
 
-如 按W键会开始录音，录音过程中按Q停止录音，待录音翻译完成后，按Ctrl+shift+enter发送消息
+Por exemplo, pressione W para iniciar a gravação, pressione Q para interromper a gravação e pressione Ctrl+shift+enter para enviar uma mensagem quando a gravação for concluída.
 
-## 五.部署运行
+## V. Execução da implantação
 
-### 编译运行
+### Compilar e executar
 
-一.安装依赖 portaudio
+I. Instalação de dependências no portaudio
 
 ```bash
 
@@ -86,7 +88,7 @@ ToDoList：
 3. Linux: apt-get install portaudio19-dev
 ```
 
-二. 编译代码
+II. Compilação do código
 
 ```bash
 # 下载源码
@@ -106,15 +108,15 @@ go build
 ./spokenai
 ```
 
-三.运行TensorflowTTS
+III. Execução do TensorflowTTS
 
 ```
-# 拉取作者已构建的镜像
+# Puxe os espelhos que foram construídos pelo autor
 docker pull ptonlix/tensorflowtts:1.0.9
 # 运行镜像
 docker run -itd -p 5000:5000 --name spokenai-tts ptonlix/tensorflowtts:1.0.9
 ```
-### 配置文件说明
+### Descrição do arquivo de configuração
 
 ```bash
 [openai]
@@ -144,16 +146,16 @@ docker run -itd -p 5000:5000 --name spokenai-tts ptonlix/tensorflowtts:1.0.9
       ttshost = "http://127.0.0.1:5000"
 ```
 
-采用toml配置文件格式， 主要分为两部分
+O formato de arquivo de configuração toml é usado e está dividido em duas seções principais
 
-1. openai配置，主要需要填写自己的apikey和如果走代理则修改apihost地址。其他都是模型配置按需修改即可
-2. file配置，由于是终端版本，采用文件存储的形式较为方便
-    - history为聊天上下文存储
-    - audio为音频存储
-        - record为录音文件存储目录
-        - play为语言合成文件存储目录
-        - enable 可以选为是否开启语音合成，默认不开启,开启需要运行tensorflowtts。
-        - ttshost 为tts api服务地址
+1. Configuração do openai, principalmente a necessidade de preencher a apikey e, se você for ao proxy, modificar o endereço do apihost. Outras configurações do modelo podem ser modificadas conforme necessário
+2. configuração de arquivos, por ser uma versão de terminal, é mais conveniente usar o formato de armazenamento de arquivos
+    - Histórico do Chat Context Store
+    - áudio para armazenamento de áudio
+        - record é o diretório de armazenamento do arquivo de gravação
+        - play é o diretório de armazenamento dos arquivos de síntese de linguagem
+        - enable Você pode escolher se deseja ativar ou não a síntese de fala; o padrão é não abrir, é necessário abrir para executar o tensorflowtts.
+        - ttshost Endereço de serviço para tts api
 
 
 <p align="center">
